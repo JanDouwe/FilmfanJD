@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}Film details{% endblock %}
+
+{% block content %}
+  <h1>{{ film.title }}</h1>
+  <img src="{{ url_for('static', filename='images/films/' + film.image_filename, _from='website') }}" class="film_detail card-img-top" alt="{{ film.title }}">
+
+  <table class="table">
+    <thead>
+        <tr>
+          <th>Regisseur</th>
+          <th>Hoofdrolspelers</th>
+          <th>Personages</th>
+          <th>Releasedatum</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                {% if director %}
+                    {{ director }}
+                {% else %}
+                    Onbekend
+                {% endif %}
+            </td>
+            <td>
+                {% for actor in actors %}
+                    {{ actor }}{% if not loop.last %}, {% endif %}
+                {% endfor %}
+            </td>
+            <td>
+                {% for character in character_names %}
+                    {{ character }}{% if not loop.last %}, {% endif %}
+                {% endfor %}
+            </td>
+            <td>{{ film.release_year }}</td>
+        </tr>
+    </tbody>
+  </table>
+
+  <h2>Beschrijving</h2>
+  <p>{{ film.extras.extra }}</p>
+
+  {% if current_user.is_authenticated %}
+
+    <label for="edit-toggle" class="edit-button">Voel je vrij om de beschrijving te verbeteren en dingen aan te vullen!</label>
+    <input type="checkbox" id="edit-toggle" class="edit-toggle">
+
+    <div id="edit-form">
+      <form method="POST" action="{{ url_for('views.edit_film', film_id=film.id) }}" class="film-form">
+        <div class="form-group">
+          <label for="title">Titel:</label>
+          <input type="text" id="title" name="title" value="{{ film.title }}" required>
+          <button type="submit">Opslaan</button>
+        </div>
+      </form>
+      
+      <form method="POST" action="{{ url_for('views.edit_film', film_id=film.id) }}" class="film-form">
+        <div class="form-group">
+          <label for="director">Regisseur:</label>
+          <input type="text" id="director" name="director" value="{{ director }}" required>
+          <button type="submit">Opslaan</button>
+        </div>
+      </form>
+      <form method="POST" action="{{ url_for('views.edit_film', film_id=film.id) }}" class="film-form">
+        <div class="form-group">
+          <label for="actors">Acteurs:</label>
+          <input type="text" id="actors" name="actors" value="{{ ', '.join(actors) }}" required>
+          <button type="submit">Opslaan</button>
+        </div>
+      </form>
+
+      <form method="POST" action="{{ url_for('views.edit_film', film_id=film.id) }}" class="film-form">
+        <div class="form-group">
+          <label for="release_year">Releasedatum:</label>
+          <input type="text" id="release_year" name="release_year" value="{{ film.release_year }}" required>
+          <button type="submit">Opslaan</button>
+        </div>
+      </form>
+    
+      <form method="POST" action="{{ url_for('views.edit_film', film_id=film.id) }}" class="film-form">
+        <div class="form-group">
+          <label for="extra">Beschrijving:</label>
+          <textarea id="extra" name="extra" required>{{ film.extras.extra }}</textarea>
+          <button type="submit">Opslaan</button>
+        </div>
+      </form>
+
+
+    </div>
+    
+    
+    
+  {% endif %}
+{% endblock %}

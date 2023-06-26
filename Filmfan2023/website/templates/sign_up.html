@@ -1,0 +1,28 @@
+{% extends "base.html" %} Home {% block title %}Sign up{% endblock %}
+
+{% block content %}
+<form method="POST">
+    <h3 align="center">Registreer je Filmfan account</h3>
+    <div class="form-group">
+        <label for="email">Wat is je emailadres?</label>
+        <input type="email" class="form-control" id="email" name="email">
+    </div>
+    <br/>
+    <div class="form-group">
+        <label for="username">Kies je gebruikersnaam</label>
+        <input type="text" class="form-control" id="username" name="username">
+    </div>
+    <br/>
+    <div class="form-group">
+        <label for="password1">Kies een wachtwoord</label>
+        <input type="password" class="form-control" id="password1" name="password1">
+    </div>
+    <br/>
+    <div class="form-group">
+        <label for="password2">Herhaal wachtwoord</label>
+        <input type="password" class="form-control" id="password2" name="password2">
+    </div>
+    <br/>
+    <button type="submit" class="btn btn-success">REGISTREREN</button>
+</form>
+{% endblock %}

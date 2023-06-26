@@ -1,0 +1,48 @@
+{% extends "base.html" %} Home {% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+    <div class="container">
+      <h1 class="display-4">Welkom bij Filmfan!</h1>
+      <p class="lead">Dé website voor echte filmfans</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <section>
+      <h1>Featured Movies</h1>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <img src="{{ url_for('static', filename='images/films/Kruistocht in spijkerbroek.jpg') }}" class="card-img-top" alt="Kruistocht in spijkerbroek">
+            <div class="card-body">
+              <h5 class="card-title">Kruistocht in spijkerbroek</h5>
+              <p class="card-text">Kruistocht in Spijkerbroek is gebaseerd op het gelijknamige boek van Thea Beckman. De vijftienjarige Dolf gebruikt een prototype van een tijdmachine en belandt tegen zijn wil in de Middeleeuwen. Hij wordt neergeslagen door overvallers, maar wordt gered door de mooie en stoere Jenne. Zij maakt deel uit van een kinderkruistocht, achtduizend kinderen die op weg zijn naar Jeruzalem om de stad te bevrijden van de Arabieren.</p>
+              <a href="/film_detail/1" class="btn btn-primary">Meer info</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <img src="{{ url_for('static', filename='images/films/zwartboekposter.jpg') }}" class="card-img-top" alt="Zwartboek">
+            <div class="card-body">
+              <h5 class="card-title">Zwartboek</h5>
+              <p class="card-text">In het laatste jaar van de tweede wereldoorlog wordt de verblijfplaats van de Joodse Rachel Stein gebombardeerd. Ze wordt opgevangen door een lokale zeiler en krijgt bezoek van Van Gein, die waarschuwt dat de Duitsers haar nieuwe adres kennen. Hij biedt haar een veilige doorgang door de Biesbosch naar het bevrijde zuiden van Nederland. Ontsnappen uit het bezette deel blijkt echter moeilijker dan gedacht.<br><br></p>
+              <a href="/film_detail/2" class="btn btn-primary">Meer info</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <img src="{{ url_for('static', filename='images/films/savingprivateryan.jpg') }}" class="card-img-top" alt="Saving Private Ryan">
+            <div class="card-body">
+              <h5 class="card-title">Saving Private Ryan</h5>
+              <p class="card-text">Tijdens de invasie van de Geallieerden in Normandië sterven twee broers. Een derde broer sterft gelijktijdig in Nieuw Guinea, bij het vechten tegen de Japanners. Als bekend wordt dat een vierde broer vermist is geraakt op het Franse platteland, wordt een missie gestart om hem veilig thuis te krijgen.<br><br><br><br></p>
+              <a href="/film_detail/3" class="btn btn-primary">Meer info</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+        
+{% endblock%}
